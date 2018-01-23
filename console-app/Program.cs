@@ -10,7 +10,7 @@ namespace console_app
             Console.WriteLine("I want to tell you bro if your number is prime or not");
             var line = Console.ReadLine();
             var number = int.Parse(line);
-            var ps = new PrimeService();
+            var ps = new PrimeService(new RemoteDatbaseConnection());
             var result = ps.IsPrime(number);
             if(result){
                 Console.WriteLine("Prime! ");

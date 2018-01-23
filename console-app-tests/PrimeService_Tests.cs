@@ -1,5 +1,6 @@
 using Xunit;
 using console_app_tests;
+using Moq;
 
 namespace console_app_tests
 {
@@ -9,7 +10,9 @@ namespace console_app_tests
 
         public PrimeService_IsPrimeShould()
         {
-            _primeService = new PrimeService();
+            var mock = new Mock<IDatabaseConnection>();
+            mock.Setup(x=>x.CanCalculate()).Returns(true);
+            _primeService = new PrimeService(mock.Object);
         }
 
         [Theory]
