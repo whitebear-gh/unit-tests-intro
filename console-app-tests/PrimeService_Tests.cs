@@ -12,28 +12,16 @@ namespace console_app_tests
             _primeService = new PrimeService();
         }
 
-        [Fact]
-        public void ReturnFalseGivenValueOf1()
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(4)]
+        [InlineData(9)]
+        public void ReturnFalseGivenValueNotPrime(int val)
         {
-            var result = _primeService.IsPrime(1);
+            var result = _primeService.IsPrime(val);
 
-            Assert.False(result, "1 should not be prime");
-        }
-
-        [Fact]
-        public void ReturnFalseGivenValueOf2()
-        {
-            var result = _primeService.IsPrime(2);
-
-            Assert.False(result, "2 should not be prime");
-        }
-        
-        [Fact]
-        public void ReturnFalseGivenValueOf4()
-        {
-            var result = _primeService.IsPrime(4);
-
-            Assert.False(result, "4 should not be prime");
+            Assert.False(result, $"{val} should not be prime");
         }
 
         [Fact]
@@ -44,12 +32,5 @@ namespace console_app_tests
             Assert.True(result, "3 should be prime");
         }
 
-        [Fact]
-        public void ReturnFalseGivenValueOf9()
-        {
-            var result = _primeService.IsPrime(9);
-
-            Assert.False(result, "9 should not be prime");
-        }
     }
 }
