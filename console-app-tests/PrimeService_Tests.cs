@@ -43,5 +43,13 @@ namespace console_app_tests
 
             Assert.True(result, "3 should be prime");
         }
+
+        [Fact]
+        public void ReturnFalseGivenValueOf9()
+        {
+            var result = _primeService.IsPrime(9);
+
+            Assert.False(result, "9 should not be prime");
+        }
     }
 }
